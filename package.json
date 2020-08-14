@@ -1,6 +1,6 @@
 {
   "name": "reactspinnertime",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -19,7 +19,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "coverage": "react-scripts test --coverage"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,5 +36,21 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "!src/**/interfaces.ts",
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "src/**/*.scss",
+      "!src/react-app-env.d.ts",
+      "!src/**/__test__/__mock__/*.tsx",
+      "!src/**/__test__/*.ts"
+    ]
+  },
+  "devDependencies": {
+    "@types/enzyme": "^3.10.5",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.3"
   }
 }
