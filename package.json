@@ -1,7 +1,6 @@
 {
-  "name": "reactspinnertime",
+  "name": "react-spinner-timer",
   "version": "1.0.0",
-  "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -17,7 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "parcel build src/index.tsx -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "coverage": "react-scripts test --coverage"
@@ -50,7 +49,42 @@
   },
   "devDependencies": {
     "@types/enzyme": "^3.10.5",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.3"
-  }
+    "enzyme-adapter-react-16": "^1.15.3",
+    "parcel-bundler": "^1.12.4"
+  },
+  "description": "React SVG Spinner for update actions",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielcsbatista/react-spinner-time.git"
+  },
+  "keywords": [
+    "react",
+    "spinner",
+    "timer",
+    "circle",
+    "loading",
+    "progress",
+    "progress bar"
+  ],
+  "author": "danielcsbatista, gsantos01, diegocruzfernades01",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielcsbatista/react-spinner-time/issues"
+  },
+  "homepage": "https://github.com/danielcsbatista/react-spinner-time#readme",
+  "peerDependencies": {
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3",
+    "typescript": "~3.7.2"
+  },
+  "files": [
+    "build"
+  ]
 }

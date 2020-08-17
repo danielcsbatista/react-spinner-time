@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./style.css";
+import "./index.css";
 
 interface IProps {
   timeInSeconds: number;
@@ -15,7 +15,7 @@ interface IProps {
  * @returns props.onLapInteraction function with data return for each lap
  */
 
-function ReactSpinnerTime(props: IProps): JSX.Element {
+function ReactSpinnerTimer(props: IProps): JSX.Element {
   const [actualLap, setActualLap] = useState(1);
 
   const updateLapsData = (finish: boolean) => {
@@ -58,4 +58,4 @@ function ReactSpinnerTime(props: IProps): JSX.Element {
   );
 }
 
-export default ReactSpinnerTime;
+export default ReactSpinnerTimer;
