@@ -55,7 +55,7 @@
     "parcel-bundler": "^1.12.4"
   },
   "description": "React SVG Spinner for update actions",
-  "main": "dist/index.js",
+  "main": "build/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/danielcsbatista/react-spinner-time.git"
@@ -70,7 +70,7 @@
     "progress bar"
   ],
   "author": "danielcsbatista, gsantos01, diegocruzfernades01",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/danielcsbatista/react-spinner-time/issues"
   },
