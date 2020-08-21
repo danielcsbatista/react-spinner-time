@@ -6,6 +6,8 @@
 
 The React Spinner Timer for [React](https://reactjs.com).
 
+Circular countdown timer with progressive animation.
+
 # Component
 
 ![React Spinner Timer](https://github.com/danielcsbatista/react-spinner-time/blob/assets/exempleSpinnerTimer.gif)
@@ -33,7 +35,7 @@ function App() {
     if (lap.isFinish)
       console.log("Finished!!");
     else
-      console.log("Running!!");
+      console.log("Running!! Lap:", );
   };
   return (
     <ReactSpinnerTimer
