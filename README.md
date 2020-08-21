@@ -35,7 +35,7 @@ function App() {
     if (lap.isFinish)
       console.log("Finished!!");
     else
-      console.log("Running!! Lap:", );
+      console.log("Running!! Lap:", lap.actualLap);
   };
   return (
     <ReactSpinnerTimer
