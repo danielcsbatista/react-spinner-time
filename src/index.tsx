@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import "./index.css";
+import * as React from "react";
+import "./index.scss";
 
-interface IProps {
+export interface IProps {
   timeInSeconds: number;
   totalLaps: number;
   isRefresh?: boolean;
@@ -15,15 +15,19 @@ interface IProps {
  * @returns props.onLapInteraction function with data return for each lap
  */
 
-function ReactSpinnerTimer(props: IProps): JSX.Element {
-  const [actualLap, setActualLap] = useState(1);
-
+const ReactSpinnerTimer: React.FC<IProps> = ({
+  timeInSeconds,
+  totalLaps,
+  onLapInteraction,
+  isRefresh,
+}) => {
+  const [actualLap, setActualLap] = React.useState(1);
   const updateLapsData = (finish: boolean) => {
-    props.onLapInteraction({
+    onLapInteraction({
       actualLap,
-      totalLaps: props.totalLaps,
+      totalLaps: totalLaps,
       isFinish: finish,
-      timeInSeconds: props.timeInSeconds,
+      timeInSeconds: timeInSeconds,
     });
   };
 
@@ -36,7 +40,7 @@ function ReactSpinnerTimer(props: IProps): JSX.Element {
     setActualLap(actualLap + 1);
   };
 
-  if (props.isRefresh) return <div></div>;
+  if (isRefresh) return <div></div>;
 
   return (
     <div>
@@ -48,7 +52,7 @@ function ReactSpinnerTimer(props: IProps): JSX.Element {
           cy="25"
           r="20"
           style={{
-            animation: `dash ${props.timeInSeconds}s linear ${props.totalLaps}`,
+            animation: `dash ${timeInSeconds}s linear ${totalLaps}`,
           }}
           onAnimationEnd={handleFinish}
           onAnimationIterationCapture={handleUpdate}
@@ -56,6 +60,6 @@ function ReactSpinnerTimer(props: IProps): JSX.Element {
       </svg>
     </div>
   );
-}
+};
 
 export default ReactSpinnerTimer;
