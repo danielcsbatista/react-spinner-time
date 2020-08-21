@@ -1,4 +1,6 @@
-[![NPM](https://img.shields.io/npm/v/react-select.svg)](https://www.npmjs.com/package/react-spinner-timer)
+![NPM](https://img.shields.io/npm/v/react-spinner-timer.svg)
+![COVERAGE](https://img.shields.io/codacy/coverage/react-spinner-timer)
+
 
 # React-Spinner-Timer
 
