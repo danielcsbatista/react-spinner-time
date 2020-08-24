@@ -6,6 +6,8 @@
 
 The React Spinner Timer for [React](https://reactjs.com).
 
+Circular countdown timer with progressive animation.
+
 # Component
 
 ![React Spinner Timer](https://github.com/danielcsbatista/react-spinner-time/blob/assets/exempleSpinnerTimer.gif)
@@ -15,11 +17,11 @@ The React Spinner Timer for [React](https://reactjs.com).
 To install React Spinner Timer you can run:
 
 ```
-yarn add react-spinner-time
+yarn add react-spinner-timer
 
 or
 
-npm install react-spinner-time
+npm install react-spinner-timer
 ```
 
 To use:
@@ -29,14 +31,17 @@ import React from "react";
 import ReactSpinnerTimer from "react-spinner-timer";
 
 function App() {
-  const handleChange = () => {
-    console.log("oh yeah!!!");
+  const handleChange = (lap) => {
+    if (lap.isFinish)
+      console.log("Finished!!");
+    else
+      console.log("Running!! Lap:", lap.actualLap);
   };
   return (
     <ReactSpinnerTimer
       timeInSeconds={60}
       totalLaps={60}
-      isRefresh={true}
+      isRefresh={false}
       onLapInteraction={handleChange}
     />
   );
@@ -44,15 +49,28 @@ function App() {
 export default App;
 
 ```
+See another example at [Code Sandbox](https://codesandbox.io/s/sweet-blackwell-ysxfn?file=/src/App.tsx)
+
 
 ## Props
 
-Common props you need to specify:
+### Common props you need to specify:
+| Prop              | Type     | Description                           |
+|-------------------|----------|---------------------------------------|
+| timeInSeconds     | Number   | Component lap time                    |
+| totalLaps         | Number   | Number of laps                        |
+| onLapInteraction  | Function | When you complete a lap, what to do?  |
+| isRefresh         | Boolean  | Refresh the lap (Optional)            |
 
-- `timeInSeconds` - time to show a component lap
-- `totalLaps` - total laps
-- `onLapInteraction` - when you complete a lap, what to do?
-- `isRefresh` - show component(Optional)
+### Function callback of OnLapInteraction
+| Prop              | Type     | Description                           |
+|-------------------|----------|---------------------------------------|
+| actualLap         | Number   | Lap actual                            |
+| totalLaps         | Number   | Number of total laps                  |
+| isFinish          | Boolean  | Interactions is finished              |
+| timeInSeconds     | Number   | Time of lap                           |
+
+---
 
 # Thanks
 
