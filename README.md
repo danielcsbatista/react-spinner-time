@@ -43,6 +43,7 @@ function App() {
       totalLaps={60}
       isRefresh={false}
       onLapInteraction={handleChange}
+      isPause={false}
     />
   );
 }
@@ -61,6 +62,7 @@ See another example at [Code Sandbox](https://codesandbox.io/s/sweet-blackwell-y
 | totalLaps         | Number   | Number of laps                        |
 | onLapInteraction  | Function | When you complete a lap, what to do?  |
 | isRefresh         | Boolean  | Refresh the lap (Optional)            |
+| isPause           | Boolean  | Default (true) pause time count       |
 
 ### Function callback of OnLapInteraction
 | Prop              | Type     | Description                           |
