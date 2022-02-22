@@ -1,19 +1,14 @@
 
 
 function ___$insertStyle(css) {
-  if (!css) {
-    return;
-  }
-  if (typeof window === 'undefined') {
-    return;
-  }
-
-  var style = document.createElement('style');
-
-  style.setAttribute('type', 'text/css');
-  style.innerHTML = css;
-  document.head.appendChild(style);
-  return css;
+    if (!css || typeof window === 'undefined') {
+        return;
+    }
+    const style = document.createElement('style');
+    style.setAttribute('type', 'text/css');
+    style.innerHTML = css;
+    document.head.appendChild(style);
+    return css;
 }
 
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -26,12 +21,13 @@ ___$insertStyle(".base {\n  margin: 5px;\n  width: 40px;\n  height: 40 px;\n  tr
  * Component that counts the cycle of time
  * @param props.timeInSeconds lap time in seconds
  * @param props.totalLaps number of laps
+ * @param props.isPause pause laps - true is default
  * @returns props.onLapInteraction function with data return for each lap
  */
 var ReactSpinnerTimer = function (_a) {
-    var timeInSeconds = _a.timeInSeconds, totalLaps = _a.totalLaps, onLapInteraction = _a.onLapInteraction, isRefresh = _a.isRefresh;
-    var _b = React.useState(1), actualLap = _b[0], setActualLap = _b[1];
-    // const actualLap = 1;
+    var timeInSeconds = _a.timeInSeconds, totalLaps = _a.totalLaps, onLapInteraction = _a.onLapInteraction, isRefresh = _a.isRefresh, _b = _a.isPaused, isPaused = _b === void 0 ? true : _b;
+    var _c = React.useState(true), animationRunning = _c[0], setAnimationRunning = _c[1];
+    var _d = React.useState(1), actualLap = _d[0], setActualLap = _d[1];
     var updateLapsData = function (finish) {
         onLapInteraction({
             actualLap: actualLap,
@@ -47,14 +43,28 @@ var ReactSpinnerTimer = function (_a) {
         updateLapsData(false);
         setActualLap(actualLap + 1);
     };
+    var handleOnClick = function () {
+        if (isPaused) {
+            setAnimationRunning(!animationRunning);
+        }
+    };
     if (isRefresh)
         return React.createElement("div", null);
-    return (React.createElement("div", null,
-        React.createElement("svg", { version: "1.1", className: "base", viewBox: "0 0 50 50" },
+    return (React.createElement("div", { onClick: handleOnClick },
+        React.createElement("svg", { version: "1.1", className: "base " + (animationRunning ? 'running' : 'paused'), viewBox: "0 0 50 50" },
             React.createElement("circle", { className: "path background", cx: "25", cy: "25", r: "20" }),
-            React.createElement("circle", { className: "path", cx: "25", cy: "25", r: "20", style: {
+            React.createElement("circle", { className: "path " + (animationRunning ? 'running' : 'paused'), cx: "25", cy: "25", r: "20", style: {
                     animation: "dash " + timeInSeconds + "s linear " + totalLaps,
-                }, onAnimationEnd: handleFinish, onAnimationIterationCapture: handleUpdate }))));
+                    animationPlayState: "" + (animationRunning ? 'running' : 'paused'),
+                }, onAnimationEnd: handleFinish, onAnimationIterationCapture: handleUpdate }),
+            React.createElement("rect", { width: "18", height: "4", y: "18", x: "16", r: "20", style: {
+                    visibility: animationRunning ? 'hidden' : 'visible',
+                    fill: 'rgb(169,169,169)',
+                } }),
+            React.createElement("rect", { width: "18", height: "4", y: "28", x: "16", r: "20", style: {
+                    visibility: animationRunning ? 'hidden' : 'visible',
+                    fill: 'rgb(169,169,169)',
+                } }))));
 };
 
 exports.default = ReactSpinnerTimer;
